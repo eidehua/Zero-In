@@ -1,0 +1,46 @@
+                                                                body 
+{
+	background-color: #0000A0
+}
+
+h1 
+{
+	font-family: Verdana;
+	font-weight: bold;
+	text-align: center;
+	padding-top: 25px;
+	padding-bottom: 25px;
+	color: orange;
+}
+.buttons 
+{
+	text-align: center;
+	border: 2px solid #000000;
+
+	border-radius: 5px;
+	background-color: #FFA100;
+	height: 30px;
+	width: 150px;
+}
+#UserOneDelete
+{
+	text-color:red;
+}
+#Submit
+{
+	text-align: center;
+
+}
+#entry 
+{
+	text-align: center;
+    	margin:  10px;
+
+	border-radius: 3px;
+	background-color: white;
+	height: 20px;
+	width: 120px;
+}
+                            
+                            
+                            

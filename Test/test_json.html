@@ -1,4 +1,4 @@
-<html>
+                                                                                                                                                                                                                                <html>
 <body>
 <h1>zer0_In</h1>
 <p>Where they were you will be</p>
@@ -7,17 +7,23 @@
 
 <div id="txtHint"><b>Person info will be listed here.</b></div>
 <script>
-//var data = " 2,3,'Buenos Aires' . 6,7,'Madrid' ";
 //var data = '{ "Location": [ { "Latitude" : 2, "Longitude" : 3, "City" : "Buenos Aires" } , { "Latitude" : 6, "Longitude" : 7, "City" : "Madrid" } ] }';  
-var data = '{ "Posted_By": [ { "PhotoID" : 2133, "FBID" : 123123}, { "PhotoID" : 21313, "FBID" : 11111}, { "PhotoID": 111, "FBID" : 1211} ] } '; 
+var data = ["whore","123"];
 xmlhttp=new XMLHttpRequest();
 xmlhttp.onreadystatechange=function() {
 	if (xmlhttp.readyState==4 && xmlhttp.status==200) {
 	document.getElementById("txtHint").innerHTML=xmlhttp.responseText;
 	}
 }
-xmlhttp.open("GET","test_json.php?q="+data,true);
+xmlhttp.open("GET","update.php?q="+data,true);
 xmlhttp.send();
 </script>
 
 </html>
+                            
+                            
+                            
+                            
+                            
+                            
+                            

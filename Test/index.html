@@ -1,0 +1,108 @@
+                                                                                                                                                                <!DOCTYPE html>
+<html>
+	<head>
+	<title>Zer0In</title>
+	<meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<style>
+       html, body, #map-canvas {
+        height: 100%;
+        margin: 0px;
+        padding: 0px
+      }
+    	</style>
+	<script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+	<script type ="text/javascript" src = "map_script.js"> </script>
+	
+	</head>
+	<body>
+		<div style="text-align: center;">
+		<h1>Zer0In</h1>
+		<button class="buttons" type="button" onclick="User1Function()" id="User 1">User 1</button>
+		<button class="buttons" type="button" onclick="UserDelete()" id="UserOneDelete">Delete</button>
+		
+		<button class="buttons" type="button" onclick="User2Function()" id="User 2">User 2</button>
+		<button class="buttons" type="button" onclick="UserDelete()" id="UserTwoDelete">Delete</button>
+		<form>
+			<input type="text" id="entry" name="location" placeholder="Enter Location" >
+		</form>
+		<button class="buttons" type="submit" id="Submit" onclick="submitLocation()">Submit</button>
+		</div>
+		<div id="txtHint">a</div>
+		<div id="outer-map" style="height:100%; width:100%; position:fixed; text-align:center;">
+			<div id="map-canvas" style="height:70%; width:70%; margin:0px; auto; display:inline-block;"></div> 
+		</div>
+	</body>
+	<script>
+
+	</script>
+	
+	<script 
+		type="text/javascript" src = "script.js">
+		var target = document.getElementById('User 1')
+		var spinner = new Spinner(opts).spin(target);
+		target.appendChild(spinner.el);
+	</script>
+	
+	<script>
+
+	function myFunction() {
+	//alert(lat);
+
+	var data = [lat,long];
+	xmlhttp=new XMLHttpRequest();
+	xmlhttp.onreadystatechange=function() {
+		if (xmlhttp.readyState==4 && xmlhttp.status==200) {
+			var response = xmlhttp.responseText;
+			var responseArr = response.split(",");
+			alert(response);
+			for(i=0; i< responseArr.length-1; i++){
+				responseArr[i] = responseArr[i].split(" ");
+				var contentString = "<img src="+ responseArr[i][0] +" width='50%' height='50%'>";
+				makeMarker(responseArr[i][1],responseArr[i][2], contentString);
+
+			}
+			//document.getElementById("txtHint").innerHTML=responseArr[0][1];
+
+			//var contentString = "<img src="+ imageurlArr[0] +">";
+			//contentString +="<img src="+ imageurlArr[0] +">";
+		}
+	}
+	xmlhttp.open("GET","test_map.php?q="+data,true);
+	xmlhttp.send();
+	}  	
+	
+	function makeMarker(lat, long, contentString){
+		lat = parseFloat(lat);
+		long = parseFloat(long);
+		//lat+=(5/69)
+	      	var pos = new google.maps.LatLng(lat,
+	       long);
+		var marker = new google.maps.Marker({
+		position: pos,
+		map: map,
+		title: 'PIC'
+		});
+		
+		var infowindow = new google.maps.InfoWindow({
+		content: contentString
+		}); 
+		     
+		google.maps.event.addListener(marker, 'click', function() {
+		infowindow.open(map,marker);
+		});
+	
+	}
+	</script>
+	
+</html>                                
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
