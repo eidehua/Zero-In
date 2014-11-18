@@ -23,10 +23,10 @@
   	<div id="map-canvas" style="height:70%; width:70%;"></div>
   	<script>
 
-	function myFunction() {
-	//alert(lat);
+	function myFunction(FBID) {
+	alert(FBID);
 
-	var data = [lat,long];
+	var data = [lat,long,FBID];
 	xmlhttp=new XMLHttpRequest();
 	xmlhttp.onreadystatechange=function() {
 		if (xmlhttp.readyState==4 && xmlhttp.status==200) {

@@ -2,9 +2,28 @@
 <html>
 	<head>
 	<title>Zer0In</title>
-	<meta name="viewport" content="initial-scale=1.0, user-scalable=no">
-    	<meta charset="utf-8">
+	
+	<!-- INITIALIZR -->
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" href="initializr/css/bootstrap.min.css">
+        <style>
+            body {
+                padding-top: 50px;
+                padding-bottom: 20px;
+            }
+        </style>
+        <link rel="stylesheet" href="initializr/css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="initializr/css/main.css">
+
+        <script src="initializr/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+	<!-- INITIALIZR -->
 	<link rel="stylesheet" type="text/css" href="style.css">
+
 	<style>
        html, body, #map-canvas {
         height: 100%;
@@ -16,26 +35,154 @@
 	<script type ="text/javascript" src = "map_script.js"> </script>
 	
 	</head>
+	
 	<body>
+	
+	
+	
+	
+	
+	
+	
+		<script>
+  // This is called with the results from from FB.getLoginStatus().
+  function statusChangeCallback(response) {
+    console.log('statusChangeCallback');
+    console.log(response);
+    // The response object is returned with a status field that lets the
+    // app know the current login status of the person.
+    // Full docs on the response object can be found in the documentation
+    // for FB.getLoginStatus().
+    if (response.status === 'connected') {
+      // Logged into your app and Facebook.
+      testAPI();
+    } else if (response.status === 'not_authorized') {
+      // The person is logged into Facebook, but not your app.
+      document.getElementById('status').innerHTML = 'Please log ' +
+        'into this app.';
+    } else {
+      // The person is not logged into Facebook, so we're not sure if
+      // they are logged into this app or not.
+      document.getElementById('status').innerHTML = 'Please log ' +
+        'into Facebook.';
+    }
+  }
+
+  // This function is called when someone finishes with the Login
+  // Button.  See the onlogin handler attached to it in the sample
+  // code below.
+  function checkLoginState() {
+    FB.getLoginStatus(function(response) {
+      statusChangeCallback(response);
+    });
+  }
+
+  window.fbAsyncInit = function() {
+  FB.init({
+    appId      : '299516230252088',
+    cookie     : true,  // enable cookies to allow the server to access 
+                        // the session
+    xfbml      : true,  // parse social plugins on this page
+    version    : 'v2.1' // use version 2.1
+  });
+
+  // Now that we've initialized the JavaScript SDK, we call 
+  // FB.getLoginStatus().  This function gets the state of the
+  // person visiting this page and can return one of three states to
+  // the callback you provide.  They can be:
+  //
+  // 1. Logged into your app ('connected')
+  // 2. Logged into Facebook, but not your app ('not_authorized')
+  // 3. Not logged into Facebook and can't tell if they are logged into
+  //    your app or not.
+  //
+  // These three cases are handled in the callback function.
+
+  FB.getLoginStatus(function(response) {
+    statusChangeCallback(response);
+  });
+
+  };
+
+  // Load the SDK asynchronously
+  (function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/sdk.js";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+
+  // Here we run a very simple test of the Graph API after login is
+  // successful.  See statusChangeCallback() for when this call is made.
+  function testAPI() {
+    console.log('Welcome!  Fetching your information.... ');
+    FB.api('/me', function(response) {
+      console.log('Successful login for: ' + response.name);
+      document.getElementById('status').innerHTML =
+        'Thanks for logging in, ' + response.name + ' ' + response.id;
+    });
+  }
+</script>
+
+<!--
+  Below we include the Login Button social plugin. This button uses
+  the JavaScript SDK to present a graphical Login button that triggers
+  the FB.login() function when clicked.
+-->
+
+<fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
+</fb:login-button>
+
+<div id="status">
+</div>
+
+
+
+
+
+
 		<div style="text-align: center;">
 		<h1>Zer0In</h1>
-		<button class="buttons" type="button" onclick="User1Function()" id="User 1">User 1</button>
-		<button class="buttons" type="button" onclick="UserDelete()" id="UserOneDelete">Delete</button>
+		<div class="btn-group btn-group-justified" role="group" style="width:80%; display:inline-block;">
+		<div class="btn-group" role="group">
+		    <button class="btn btn-warning" type="button" onclick="start(1)" id="User 1">User 1</button>
+		</div>
+		<div class="btn-group" role="group">
+		<button class="btn btn-warning" type="button" onclick="UserDelete()" id="UserOneDelete">Delete</button>
+		 </div>
+		<div class="btn-group" role="group">
+		<button class="btn btn-warning" type="button" onclick="start(2)" id="User 2">User 2</button>
+		</div>
+		<div class="btn-group" role="group">
+		<button class="btn btn-warning" type="button" onclick="UserDelete()" id="UserTwoDelete">Delete</button>
+		</div>
+		</div>
 		
-		<button class="buttons" type="button" onclick="User2Function()" id="User 2">User 2</button>
-		<button class="buttons" type="button" onclick="UserDelete()" id="UserTwoDelete">Delete</button>
-		<form>
+		<form role = "form">
 			<input type="text" id="entry" name="location" placeholder="Enter Location" >
 		</form>
-		<button class="buttons" type="submit" id="Submit" onclick="submitLocation()">Submit</button>
+		<button class="btn btn-warning" type="submit" id="Submit" onclick="submitLocation() ">Submit &raquo;</button>
 		</div>
-		<div id="txtHint">a</div>
+		
+		
+		<div id="txtHint"></div>
 		<div id="outer-map" style="height:100%; width:100%; position:fixed; text-align:center;">
 			<div id="map-canvas" style="height:70%; width:70%; margin:0px; auto; display:inline-block;"></div> 
 		</div>
 	</body>
 	<script>
 
+	</script>
+	
+	<script>
+	function start(num){
+	if(num == 1)
+		User1Function();
+	else
+		User2Function();
+	initialize();
+	}
 	</script>
 	
 	<script 
@@ -45,56 +192,7 @@
 		target.appendChild(spinner.el);
 	</script>
 	
-	<script>
 
-	function myFunction() {
-	//alert(lat);
-
-	var data = [lat,long];
-	xmlhttp=new XMLHttpRequest();
-	xmlhttp.onreadystatechange=function() {
-		if (xmlhttp.readyState==4 && xmlhttp.status==200) {
-			var response = xmlhttp.responseText;
-			var responseArr = response.split(",");
-			alert(response);
-			for(i=0; i< responseArr.length-1; i++){
-				responseArr[i] = responseArr[i].split(" ");
-				var contentString = "<img src="+ responseArr[i][0] +" width='50%' height='50%'>";
-				makeMarker(responseArr[i][1],responseArr[i][2], contentString);
-
-			}
-			//document.getElementById("txtHint").innerHTML=responseArr[0][1];
-
-			//var contentString = "<img src="+ imageurlArr[0] +">";
-			//contentString +="<img src="+ imageurlArr[0] +">";
-		}
-	}
-	xmlhttp.open("GET","test_map.php?q="+data,true);
-	xmlhttp.send();
-	}  	
-	
-	function makeMarker(lat, long, contentString){
-		lat = parseFloat(lat);
-		long = parseFloat(long);
-		//lat+=(5/69)
-	      	var pos = new google.maps.LatLng(lat,
-	       long);
-		var marker = new google.maps.Marker({
-		position: pos,
-		map: map,
-		title: 'PIC'
-		});
-		
-		var infowindow = new google.maps.InfoWindow({
-		content: contentString
-		}); 
-		     
-		google.maps.event.addListener(marker, 'click', function() {
-		infowindow.open(map,marker);
-		});
-	
-	}
-	</script>
 	
 </html>                                
                             

@@ -188,7 +188,7 @@ var getPicturesOfSelectedCity = function(){
 	var tempCurrPic = {};
 	tempCurrPic['PhotoID'] = picturesOfSelectedCity[j]['PhotoID'];
 	tempCurrPic['PhotoDate'] = picturesOfSelectedCity[j]['PhotoDate'];
-	tempCurrPic['PhotoURL'] = picturesOfSelectedCity[j]['PhotoURL'];
+	tempCurrPic['PhotoURL'] = encodeURIComponent(picturesOfSelectedCity[j]['PhotoURL']);
 	
 	var item = '{ "Item": [' + JSON.stringify(tempCurrPic) + '] }';
 	console.log(item) 	
@@ -246,7 +246,7 @@ for (var i = 0; i < arrOfLocations.length; i++) {
 			xmlhttp=new XMLHttpRequest();
 			xmlhttp.open("GET","test_json.php?q="+data,true);
 			xmlhttp.send();
-			break;
+			
 			}
 
 		}
@@ -269,6 +269,7 @@ function submitLocation() {
 var city = document.getElementById("entry").value;
 getInfoAboutCity(city)
 getPicturesOfSelectedCity()
+initializeOnSubmit(city);
 }
 
 function UserDelete(){

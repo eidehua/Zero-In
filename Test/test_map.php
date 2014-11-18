@@ -7,7 +7,7 @@ if (mysqli_connect_errno()) {
 }
 
 $q = explode(",", $q);
-$mysql_script = "SELECT PhotoURL,Latitude,Longitude FROM Item,Tagged_At WHERE Item.PhotoID = Tagged_At.PhotoID AND Latitude <=". ($q[0]+ (5/69)) ."AND Latitude>=". ($q[0]- (5/69)). "AND Longitude<=" . ($q[1]+ (5/69))."AND Longitude>=". ($q[1]- (5/69))." AND Item.PhotoID IN (SELECT PhotoID FROM Posted_By WHERE FBID IN (SELECT FriendFBID FROM Friends_With WHERE Current_UserFBID =1153312243))" ;
+$mysql_script = "SELECT PhotoURL,Latitude,Longitude FROM Item,Tagged_At WHERE Item.PhotoID = Tagged_At.PhotoID AND Latitude <=". ($q[0]+ (5/69)) ."AND Latitude>=". ($q[0]- (5/69)). "AND Longitude<=" . ($q[1]+ (5/69))."AND Longitude>=". ($q[1]- (5/69))." AND Item.PhotoID IN (SELECT PhotoID FROM Posted_By WHERE FBID IN (SELECT FriendFBID FROM Friends_With WHERE Current_UserFBID =$q[2]))" ;
 $result = mysqli_query($con,$mysql_script);
 if(!$result){
     echo "Result is False" . mysqli_error($con);
